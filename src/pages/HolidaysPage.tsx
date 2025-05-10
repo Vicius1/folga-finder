@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getPublicHolidays } from "../services/holidayApi";
+import BackButton from "../components/BackButton";
 import { Holiday } from "../types";
 
 function HolidaysPage() {
@@ -28,14 +29,23 @@ function HolidaysPage() {
 
   return (
     <div className="container py-4">
+      <BackButton />
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Feriados em {countryCode} - {year}</h2>
-        <Link
-          to={`/feriadoes/${countryCode}/${year}`}
-          className="btn btn-outline-primary btn-sm"
-        >
-          Ver Feriados prolongados
-        </Link>
+        <div className="d-flex gap-2">
+          <Link
+            to={`/proximos/${countryCode}`}
+            className="btn btn-outline-secondary btn-sm"
+          >
+            Ver Próximos Feriados
+          </Link>
+          <Link
+            to={`/feriadoes/${countryCode}/${year}`}
+            className="btn btn-outline-info btn-sm"
+          >
+            Ver Feriados prolongados
+          </Link>
+        </div>
       </div>
 
       {holidays.length === 0 ? (

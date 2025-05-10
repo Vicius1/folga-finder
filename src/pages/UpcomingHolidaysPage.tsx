@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getNextPublicHolidays } from "../services/holidayApi";
+import BackButton from "../components/BackButton";
 import { Holiday } from "../types";
 
 function UpcomingHolidaysPage() {
@@ -28,6 +29,7 @@ function UpcomingHolidaysPage() {
 
   return (
     <div className="container py-4">
+      <BackButton />
       <h2 className="mb-4">Próximos feriados em {countryCode}</h2>
       {holidays.length === 0 ? (
         <p>Nenhum feriado encontrado.</p>

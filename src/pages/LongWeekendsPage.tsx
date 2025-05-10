@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLongWeekends } from "../services/holidayApi";
+import BackButton from "../components/BackButton";
 import { LongWeekend } from "../types";
 
 function LongWeekendsPage() {
@@ -28,6 +29,7 @@ function LongWeekendsPage() {
 
   return (
     <div className="container py-4">
+      <BackButton />
       <h2 className="mb-4">Feriados prolongados em {countryCode} - {year}</h2>
       {weekends.length === 0 ? (
         <p>Nenhum feriado prolongado encontrado.</p>

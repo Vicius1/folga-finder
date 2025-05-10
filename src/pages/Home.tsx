@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CountrySelector from "../components/CountrySelector";
 import { useNavigate } from "react-router-dom";
+import CountrySelector from "../components/CountrySelector";
 import "../styles/main.scss";
 
 function Home() {
