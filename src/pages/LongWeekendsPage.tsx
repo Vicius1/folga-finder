@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getLongWeekends } from "../services/holidayApi";
 import BackButton from "../components/BackButton";
 import { LongWeekend } from "../types";
 
 function LongWeekendsPage() {
   const { countryCode, year } = useParams<{ countryCode: string; year: string }>();
+  const location = useLocation();
+  const countryName = location.state?.countryName || countryCode;
   const [weekends, setWeekends] = useState<LongWeekend[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -30,7 +32,7 @@ function LongWeekendsPage() {
   return (
     <div className="container py-4">
       <BackButton />
-      <h2 className="mb-4">Feriados prolongados em {countryCode} - {year}</h2>
+      <h2 className="mb-4">Feriados prolongados em {countryName} - {year}</h2>
       {weekends.length === 0 ? (
         <p>Nenhum feriado prolongado encontrado.</p>
       ) : (

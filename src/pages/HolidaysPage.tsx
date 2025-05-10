@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { getPublicHolidays } from "../services/holidayApi";
 import BackButton from "../components/BackButton";
 import { Holiday } from "../types";
 
 function HolidaysPage() {
   const { countryCode, year } = useParams<{ countryCode: string; year: string }>();
+  const location = useLocation();
+  const countryName = location.state?.countryName || countryCode;
   const [holidays, setHolidays] = useState<Holiday[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,16 +33,18 @@ function HolidaysPage() {
     <div className="container py-4">
       <BackButton />
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Feriados em {countryCode} - {year}</h2>
+        <h2>Feriados em {countryName} - {year}</h2>
         <div className="d-flex gap-2">
           <Link
             to={`/proximos/${countryCode}`}
+            state={{ countryName }}
             className="btn btn-outline-secondary btn-sm"
           >
             Ver Próximos Feriados
           </Link>
           <Link
             to={`/feriadoes/${countryCode}/${year}`}
+            state={{ countryName }}
             className="btn btn-outline-info btn-sm"
           >
             Ver Feriados prolongados

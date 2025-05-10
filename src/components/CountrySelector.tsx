@@ -5,9 +5,10 @@ import { Country } from "../types";
 interface CountrySelectorProps {
   selected: string;
   onChange: (countryCode: string) => void;
+  onCountriesLoaded?: (countries: Country[]) => void;
 }
 
-function CountrySelector({ selected, onChange }: CountrySelectorProps) {
+function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelectorProps) {
   const [countries, setCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -16,6 +17,9 @@ function CountrySelector({ selected, onChange }: CountrySelectorProps) {
       try {
         const data = await getAvailableCountries();
         setCountries(data);
+        if (onCountriesLoaded) {
+          onCountriesLoaded(data);
+        }
       } catch (error) {
         console.error("Erro ao buscar países:", error);
       } finally {
@@ -24,7 +28,7 @@ function CountrySelector({ selected, onChange }: CountrySelectorProps) {
     };
 
     fetchCountries();
-  }, []);
+  }, [onCountriesLoaded]);
 
   if (loading) return <p>Carregando países...</p>;
 
