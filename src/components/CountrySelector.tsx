@@ -43,7 +43,7 @@ function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelec
         value={selected}
         onChange={(e) => onChange(e.target.value)}
       >
-        <option value="">-- Escolha um país --</option>
+        <option value="">Escolha um país</option>
         {countries.map((country) => (
           <option key={country.countryCode} value={country.countryCode}>
             {country.name}

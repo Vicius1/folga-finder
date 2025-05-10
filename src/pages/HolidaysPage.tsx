@@ -61,16 +61,14 @@ function HolidaysPage() {
               <th>Data</th>
               <th>Nome</th>
               <th>Local</th>
-              <th>Tipo</th>
             </tr>
           </thead>
           <tbody>
             {holidays.map((holiday) => (
               <tr key={holiday.date}>
-                <td>{holiday.date}</td>
+                <td>{new Date(holiday.date + "T00:00:00").toLocaleDateString("pt-BR")}</td>
                 <td>{holiday.localName}</td>
                 <td>{holiday.counties?.join(", ") || "Nacional"}</td>
-                <td>{holiday.types?.join(", ")}</td>
               </tr>
             ))}
           </tbody>

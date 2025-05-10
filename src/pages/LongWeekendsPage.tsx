@@ -39,7 +39,7 @@ function LongWeekendsPage() {
         <ul className="list-group">
           {weekends.map((w, idx) => (
             <li key={idx} className="list-group-item">
-              <strong>{w.startDate}</strong> até <strong>{w.endDate}</strong> — {w.dayCount} dias
+              <strong>{new Date(w.startDate + "T00:00:00").toLocaleDateString("pt-BR")}</strong> até <strong>{new Date(w.endDate).toLocaleDateString("pt-BR")}</strong> — {w.dayCount} dias
             </li>
           ))}
         </ul>

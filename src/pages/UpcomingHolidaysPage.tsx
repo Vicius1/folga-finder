@@ -39,7 +39,7 @@ function UpcomingHolidaysPage() {
         <ul className="list-group">
           {holidays.map((holiday) => (
             <li key={holiday.date} className="list-group-item">
-              <strong>{holiday.date}</strong> — {holiday.localName} ({holiday.name})
+              <strong>{new Date(holiday.date + "T00:00:00").toLocaleDateString("pt-BR", { timeZone: "America/Sao_Paulo" })}</strong> — {holiday.localName} ({holiday.name})
             </li>
           ))}
         </ul>
