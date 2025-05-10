@@ -10,6 +10,7 @@ function LongWeekendsPage() {
   const countryName = location.state?.countryName || countryCode;
   const [weekends, setWeekends] = useState<LongWeekend[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchLongWeekends = async () => {
@@ -19,6 +20,7 @@ function LongWeekendsPage() {
         setWeekends(data);
       } catch (error) {
         console.error("Erro ao buscar feriados prolongados:", error);
+        setError("Não foi possível carregar os feriados. Tente novamente mais tarde.");
       } finally {
         setLoading(false);
       }
@@ -28,6 +30,7 @@ function LongWeekendsPage() {
   }, [countryCode, year]);
 
   if (loading) return <p>Carregando feriados prolongados...</p>;
+  if (error) return <p className="text-danger">{error}</p>;
 
   return (
     <div className="container py-4">

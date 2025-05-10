@@ -13,7 +13,7 @@ function Home() {
 
   // Função que irá ser chamada quando os países forem carregados
   const handleCountriesLoaded = (loadedCountries: Country[]) => {
-    setCountries(loadedCountries);  // Armazena os países na variável de estado
+    setCountries(loadedCountries);
   };
 
   const handleSubmit = (e: React.FormEvent) => {

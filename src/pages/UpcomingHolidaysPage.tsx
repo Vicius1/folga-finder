@@ -10,6 +10,7 @@ function UpcomingHolidaysPage() {
   const countryName = location.state?.countryName || countryCode;
   const [holidays, setHolidays] = useState<Holiday[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchHolidays = async () => {
@@ -19,6 +20,7 @@ function UpcomingHolidaysPage() {
         setHolidays(data.slice(0, 5)); // Mostra só os próximos 5
       } catch (error) {
         console.error("Erro ao buscar próximos feriados:", error);
+        setError("Não foi possível carregar os feriados. Tente novamente mais tarde.");
       } finally {
         setLoading(false);
       }
@@ -28,6 +30,7 @@ function UpcomingHolidaysPage() {
   }, [countryCode]);
 
   if (loading) return <p>Carregando próximos feriados...</p>;
+  if (error) return <p className="text-danger">{error}</p>;
 
   return (
     <div className="container py-4">

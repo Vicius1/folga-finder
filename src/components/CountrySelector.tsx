@@ -11,6 +11,7 @@ interface CountrySelectorProps {
 function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelectorProps) {
   const [countries, setCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -22,6 +23,7 @@ function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelec
         }
       } catch (error) {
         console.error("Erro ao buscar países:", error);
+        setError("Não foi possível carregar a lista de países. Tente novamente mais tarde.");
       } finally {
         setLoading(false);
       }
@@ -31,6 +33,7 @@ function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelec
   }, [onCountriesLoaded]);
 
   if (loading) return <p>Carregando países...</p>;
+  if (error) return <p className="text-danger">{error}</p>;
 
   return (
     <div className="mb-3">

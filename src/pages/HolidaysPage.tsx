@@ -10,6 +10,7 @@ function HolidaysPage() {
   const countryName = location.state?.countryName || countryCode;
   const [holidays, setHolidays] = useState<Holiday[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchHolidays = async () => {
@@ -19,6 +20,7 @@ function HolidaysPage() {
         setHolidays(data);
       } catch (error) {
         console.error("Erro ao buscar feriados:", error);
+        setError("Não foi possível carregar os feriados. Tente novamente mais tarde.");
       } finally {
         setLoading(false);
       }
@@ -28,6 +30,7 @@ function HolidaysPage() {
   }, [countryCode, year]);
 
   if (loading) return <p>Carregando feriados...</p>;
+  if (error) return <p className="text-danger">{error}</p>;
 
   return (
     <div className="container py-4">
