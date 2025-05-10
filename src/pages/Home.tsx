@@ -16,6 +16,16 @@ function Home() {
     navigate(`/feriados/${selectedCountry}/${selectedYear}`);
   };
 
+  const handleUpcoming = () => {
+    if (!selectedCountry) return;
+    navigate(`/proximos/${selectedCountry}`);
+  };
+
+  const handleLongWeekends = () => {
+    if (!selectedCountry || !selectedYear) return;
+    navigate(`/feriadoes/${selectedCountry}/${selectedYear}`);
+  };
+
   return (
     <div className="container py-4">
       <h1 className="mb-4">Folga Finder</h1>
@@ -37,9 +47,33 @@ function Home() {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Ver feriados
-        </button>
+        <div className="d-flex gap-2">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={!selectedCountry}
+          >
+            Ver todos os feriados
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-outline-secondary"
+            onClick={handleUpcoming}
+            disabled={!selectedCountry}
+          >
+            Ver próximos feriados
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-outline-info"
+            onClick={handleLongWeekends}
+            disabled={!selectedCountry}
+          >
+            Ver feriados prolongados
+          </button>
+        </div>
       </form>
     </div>
   );

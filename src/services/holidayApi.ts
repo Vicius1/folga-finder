@@ -17,4 +17,9 @@ export async function getNextPublicHolidays(countryCode: string): Promise<Holida
     const response = await axios.get<Holiday[]>(`${BASE_URL}/NextPublicHolidays/${countryCode}`);
     return response.data;
 }
+
+export async function getLongWeekends(countryCode: string, year: string) {
+    const response = await axios.get(`${BASE_URL}/LongWeekend/${year}/${countryCode}`);
+    return response.data;
+}
   

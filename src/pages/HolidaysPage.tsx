@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getPublicHolidays } from "../services/holidayApi";
 import { Holiday } from "../types";
 
@@ -28,7 +28,16 @@ function HolidaysPage() {
 
   return (
     <div className="container py-4">
-      <h2 className="mb-4">Feriados em {countryCode} - {year}</h2>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h2>Feriados em {countryCode} - {year}</h2>
+        <Link
+          to={`/feriadoes/${countryCode}/${year}`}
+          className="btn btn-outline-primary btn-sm"
+        >
+          Ver Feriados prolongados
+        </Link>
+      </div>
+
       {holidays.length === 0 ? (
         <p>Nenhum feriado encontrado.</p>
       ) : (
