@@ -1,3 +1,5 @@
+@import "bootstrap/scss/bootstrap";
+
 html {
   overflow-y: auto;
 }
@@ -23,5 +25,41 @@ html {
     position: relative;
     bottom: 2px;
     font-size: 16px;
+  }
+}
+
+.btn.btn-upcoming {
+  background-color: #f6aa1c;
+  border-color: #f6aa1c;
+  color: white;
+
+  &:hover {
+    background-color: #e59417;
+    border-color: #d98312;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: #ffd382;
+    border-color: #ffd382;
+    color: white;
+  }
+}
+
+.btn.btn-longweekends {
+  background-color: #606c38;
+  border-color: #606c38;
+  color: white;
+
+  &:hover {
+    background-color: #4e572d;
+    border-color: #3f4725;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: #a4ad87;
+    border-color: #a4ad87;
+    color: white;
   }
 }

@@ -43,7 +43,7 @@ function HolidaysPage() {
           <Link
             to={`/proximos/${countryCode}`}
             state={{ countryName }}
-            className="btn btn-outline-secondary btn-sm icon-align-custom"
+            className="btn btn-upcoming btn-sm icon-align-custom"
           >
             Ver Próximos Feriados
             <span className="ms-2">
@@ -53,7 +53,7 @@ function HolidaysPage() {
           <Link
             to={`/feriadoes/${countryCode}/${year}`}
             state={{ countryName }}
-            className="btn btn-outline-info btn-sm icon-align-custom"
+            className="btn btn-longweekends btn-sm icon-align-custom"
           >
             Ver Feriados prolongados
             <span className="ms-2">

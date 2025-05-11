@@ -94,7 +94,7 @@ function Home() {
 
           <button
             type="button"
-            className="btn btn-outline-secondary"
+            className="btn btn-upcoming"
             onClick={handleUpcoming}
             disabled={!selectedCountry}
           >
@@ -107,7 +107,7 @@ function Home() {
 
           <button
             type="button"
-            className="btn btn-outline-info"
+            className="btn btn-longweekends"
             onClick={handleLongWeekends}
             disabled={!selectedCountry}
           >
