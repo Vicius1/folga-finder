@@ -6,17 +6,23 @@ import "../styles/main.scss";
 import { Country } from "../types";
 
 function Home() {
+  // Estado para armazenar o país selecionado pelo usuário
   const [selectedCountry, setSelectedCountry] = useState<string>("");
+
+  // Estado para o ano selecionado, iniciado com o ano atual
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
+  
+  // Lista de países disponíveis, carregada a partir da API
   const [countries, setCountries] = useState<Country[]>([]);
 
   const navigate = useNavigate();
 
-  // Função que irá ser chamada quando os países forem carregados
+  // Função que irá ser chamada quando os países forem carregados no componente CountrySelector
   const handleCountriesLoaded = (loadedCountries: Country[]) => {
     setCountries(loadedCountries);
   };
 
+  // Envia o usuário para a rota de feriados normais (por país e ano)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedCountry || !selectedYear) return;
@@ -30,6 +36,7 @@ function Home() {
     });
   };
 
+  // Envia o usuário para a rota de próximos feriados
   const handleUpcoming = () => {
     if (!selectedCountry) return;
 
@@ -42,6 +49,7 @@ function Home() {
     });
   };
 
+  // Envia o usuário para a rota de feriados prolongados
   const handleLongWeekends = () => {
     if (!selectedCountry || !selectedYear) return;
 
@@ -56,16 +64,18 @@ function Home() {
 
   return (
     <div className="container py-4">
-      <h1 className="mb-4">Folga Finder</h1>
-      <p className="lead">Veja os feriados do seu país em um clique!</p>
+      <span className="fs-4 fw-semibold">Veja os feriados do seu país em um clique!</span>
 
+      {/* Formulário para selecionar país e ano */}
       <form onSubmit={handleSubmit} className="mt-4">
+        {/* Componente reutilizável para seleção de país */}
         <CountrySelector
           selected={selectedCountry}
           onChange={setSelectedCountry}
           onCountriesLoaded={handleCountriesLoaded}
         />
 
+        {/* Campo para entrada de ano */}
         <div className="mb-3">
           <label htmlFor="year-input" className="form-label">Ano:</label>
           <input
@@ -79,6 +89,7 @@ function Home() {
           />
         </div>
 
+        {/* Botões de ação para consultar os tipos de feriados */}
         <div className="d-flex gap-2">
           <button
             type="submit"

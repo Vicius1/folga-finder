@@ -7,13 +7,19 @@ import "../styles/main.scss";
 import { Holiday } from "../types";
 
 function HolidaysPage() {
+  // Recupera os parâmetros da rota (código do país e ano)
   const { countryCode, year } = useParams<{ countryCode: string; year: string }>();
+  
+  // Recupera o estado passado via navegação
   const location = useLocation();
   const countryName = location.state?.countryName || countryCode;
+  
+  // Estado local para armazenar os feriados, status de carregamento e erro
   const [holidays, setHolidays] = useState<Holiday[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // useEffect para buscar os feriados ao montar o componente ou mudar os parâmetros
   useEffect(() => {
     const fetchHolidays = async () => {
       if (!countryCode || !year) return;
@@ -31,15 +37,21 @@ function HolidaysPage() {
     fetchHolidays();
   }, [countryCode, year]);
 
+  // Exibe mensagem de carregamento
   if (loading) return <p>Carregando feriados...</p>;
+
+  // Exibe mensagem de erro caso haja falha na requisição
   if (error) return <p className="text-danger">{error}</p>;
 
   return (
     <div className="container py-4">
       <BackButton />
+
+      {/* Título e botões de navegação relacionados */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h2>Feriados em {countryName} - {year}</h2>
         <div className="d-flex gap-2">
+          {/* Link para ver os próximos feriados */}
           <Link
             to={`/proximos/${countryCode}`}
             state={{ countryName }}
@@ -50,6 +62,8 @@ function HolidaysPage() {
               <LuCalendarFold />
             </span>
           </Link>
+
+          {/* Link para ver os feriados prolongados */}
           <Link
             to={`/feriadoes/${countryCode}/${year}`}
             state={{ countryName }}
@@ -63,6 +77,7 @@ function HolidaysPage() {
         </div>
       </div>
 
+      {/* Exibição da tabela ou mensagem caso não haja feriados */}
       {holidays.length === 0 ? (
         <p>Nenhum feriado encontrado.</p>
       ) : (

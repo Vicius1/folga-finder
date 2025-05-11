@@ -1,8 +1,10 @@
+// Representa um país disponível na API, com seu código e nome completo
 export interface Country {
     countryCode: string;
     name: string;
 }
 
+// Representa um feriado retornado pela API
 export interface Holiday {
     date: string;
     localName: string;
@@ -14,9 +16,9 @@ export interface Holiday {
     types?: string[];
 }
 
+// Representa um feriado prolongado ("feriadão")
 export interface LongWeekend {
   startDate: string;
   endDate: string;
   dayCount: number;
-  needBridgeDay: boolean;
 }

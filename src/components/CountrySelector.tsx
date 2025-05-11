@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAvailableCountries } from "../services/holidayApi";
 import { Country } from "../types";
 
+// Definindo as propriedades do componente CountrySelector
 interface CountrySelectorProps {
   selected: string;
   onChange: (countryCode: string) => void;
@@ -9,7 +10,10 @@ interface CountrySelectorProps {
 }
 
 function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelectorProps) {
+  // Estado para armazenar a lista de países
   const [countries, setCountries] = useState<Country[]>([]);
+
+  // Estados para carregamento e erro
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,7 +36,10 @@ function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelec
     fetchCountries();
   }, [onCountriesLoaded]);
 
+  // Exibe mensagem de carregamento enquanto os dados estão sendo buscados
   if (loading) return <p>Carregando países...</p>;
+
+  // Exibe mensagem de erro caso haja falha na requisição
   if (error) return <p className="text-danger">{error}</p>;
 
   return (
@@ -48,6 +55,7 @@ function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelec
       >
         <option value="">Escolha um país</option>
         {countries.map((country) => (
+          // Mapeia a lista de países e gera uma opção para cada um
           <option key={country.countryCode} value={country.countryCode}>
             {country.name}
           </option>
