@@ -8,7 +8,7 @@ function BackButton() {
     // Botão de voltar que chama a função de navegação para voltar uma página na história
     <button
       onClick={() => navigate(-1)}
-      className="btn btn-outline-secondary btn-sm mb-3"
+      className="btn btn-outline-secondary btn-sm mb-3 fw-bold"
     >
       ← Voltar
     </button>

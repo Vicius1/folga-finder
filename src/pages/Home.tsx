@@ -93,7 +93,7 @@ function Home() {
         <div className="d-flex gap-2">
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary fw-bold"
             disabled={!selectedCountry}
           >
           
@@ -105,7 +105,7 @@ function Home() {
 
           <button
             type="button"
-            className="btn btn-upcoming"
+            className="btn btn-upcoming fw-bold"
             onClick={handleUpcoming}
             disabled={!selectedCountry}
           >
@@ -118,7 +118,7 @@ function Home() {
 
           <button
             type="button"
-            className="btn btn-longweekends"
+            className="btn btn-longweekends fw-bold"
             onClick={handleLongWeekends}
             disabled={!selectedCountry}
           >
