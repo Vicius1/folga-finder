@@ -36,7 +36,14 @@ function LongWeekendsPage() {
   }, [countryCode, year]);
 
   // Exibe mensagem de carregamento enquanto os dados estão sendo buscados
-  if (loading) return <p>Carregando feriados prolongados...</p>;
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center my-3">
+        <div className="spinner-border text-primary" role="status" />
+        <span className="ms-2">Carregando feriados...</span>
+      </div>
+    );
+  }
 
   // Exibe mensagem de erro caso haja falha na requisição
   if (error) return <p className="text-danger">{error}</p>;
