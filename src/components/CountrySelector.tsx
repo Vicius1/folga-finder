@@ -12,11 +12,12 @@ interface CountrySelectorProps {
 function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelectorProps) {
   // Estado para armazenar a lista de países
   const [countries, setCountries] = useState<Country[]>([]);
-
+  
   // Estados para carregamento e erro
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Memorizando o resultado da requisição
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -33,8 +34,10 @@ function CountrySelector({ selected, onChange, onCountriesLoaded }: CountrySelec
       }
     };
 
-    fetchCountries();
-  }, [onCountriesLoaded]);
+    if (countries.length === 0) {
+      fetchCountries();
+    }
+  }, [onCountriesLoaded, countries.length]); // Vai garantir que a requisição só seja feita uma vez
 
   // Exibe mensagem de carregamento enquanto os dados estão sendo buscados
   if (loading) return <p>Carregando países...</p>;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CountrySelector from "../components/CountrySelector";
+import CountryCalendar from "../components/CountryCalendar";
 import { LuCalendarDays, LuCalendarCheck2, LuCalendarRange } from "react-icons/lu";
 import "../styles/main.scss";
 import { Country } from "../types";
@@ -130,6 +131,27 @@ function Home() {
           </button>
         </div>
       </form>
+      
+      {/* Seção com os feriados do mês atual no Brasil, Estados Unidos e Japão */}
+      <div className="mt-5">
+      <h5 className="fw-semibold mb-3">Feriados do mês atual ao redor do mundo!</h5>
+      <div className="d-flex flex-wrap gap-3 justify-content-center">
+        <div className="calendar-container">
+            <h6 className="text-center">Brasil</h6>
+            <CountryCalendar countryCode="BR" />
+          </div>
+
+          <div className="calendar-container">
+            <h6 className="text-center">Estados Unidos</h6>
+            <CountryCalendar countryCode="US" />
+          </div>
+
+          <div className="calendar-container">
+            <h6 className="text-center">Japão</h6>
+            <CountryCalendar countryCode="JP" />
+          </div>
+      </div>
+</div>
     </div>
   );
 }

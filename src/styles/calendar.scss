@@ -1,0 +1,29 @@
+.react-calendar__tile {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-container {
+  text-align: center;
+}
+
+.react-calendar__tile.highlight {
+  background: #ffc107;
+  color: black;
+  font-weight: bold;
+}
+
+.react-calendar__tile .react-calendar__date {
+  margin-bottom: 5px;
+}
+
+.holiday-dot {
+  width: 8px;
+  height: 8px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+}
