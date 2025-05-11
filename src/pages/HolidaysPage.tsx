@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { getPublicHolidays } from "../services/holidayApi";
 import BackButton from "../components/BackButton";
-import { LuCalendarFold, LuCalendarRange } from "react-icons/lu";
+import { LuCalendarCheck2, LuCalendarRange } from "react-icons/lu";
 import "../styles/main.scss";
 import { Holiday } from "../types";
 
@@ -59,7 +59,7 @@ function HolidaysPage() {
           >
             Ver Próximos Feriados
             <span className="ms-2">
-              <LuCalendarFold />
+              <LuCalendarCheck2 />
             </span>
           </Link>
 

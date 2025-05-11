@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CountrySelector from "../components/CountrySelector";
-import { LuCalendarDays, LuCalendarFold, LuCalendarRange } from "react-icons/lu";
+import { LuCalendarDays, LuCalendarCheck2, LuCalendarRange } from "react-icons/lu";
 import "../styles/main.scss";
 import { Country } from "../types";
 
@@ -112,7 +112,7 @@ function Home() {
             
             Ver próximos feriados
             <span className="ms-2 icon-align">
-              <LuCalendarFold />
+              <LuCalendarCheck2 />
             </span>
           </button>
 
