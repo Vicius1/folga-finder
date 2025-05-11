@@ -7,7 +7,8 @@ import LongWeekendsPage from "./pages/LongWeekendsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import './App.css';
+import "../src/styles/main.scss";
+
 
 function App() {
   return (

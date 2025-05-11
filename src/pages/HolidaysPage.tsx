@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { getPublicHolidays } from "../services/holidayApi";
 import BackButton from "../components/BackButton";
+import { LuCalendarFold, LuCalendarRange } from "react-icons/lu";
+import "../styles/main.scss";
 import { Holiday } from "../types";
 
 function HolidaysPage() {
@@ -41,16 +43,22 @@ function HolidaysPage() {
           <Link
             to={`/proximos/${countryCode}`}
             state={{ countryName }}
-            className="btn btn-outline-secondary btn-sm"
+            className="btn btn-outline-secondary btn-sm icon-align-custom"
           >
             Ver Próximos Feriados
+            <span className="ms-2">
+              <LuCalendarFold />
+            </span>
           </Link>
           <Link
             to={`/feriadoes/${countryCode}/${year}`}
             state={{ countryName }}
-            className="btn btn-outline-info btn-sm"
+            className="btn btn-outline-info btn-sm icon-align-custom"
           >
             Ver Feriados prolongados
+            <span className="ms-2">
+              <LuCalendarRange />
+            </span>
           </Link>
         </div>
       </div>

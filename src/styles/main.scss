@@ -1,0 +1,27 @@
+html {
+  overflow-y: auto;
+}
+
+.icon-align {
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    vertical-align: middle;
+    position: relative;
+    top: 2px;
+    font-size: 18px;
+  }
+}
+
+.icon-align-custom {
+  display: inline-flex;
+  align-items: center;
+  font-size: 16px;
+  svg {
+    vertical-align: middle;
+    position: relative;
+    bottom: 2px;
+    font-size: 16px;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CountrySelector from "../components/CountrySelector";
+import { LuCalendarDays, LuCalendarFold, LuCalendarRange } from "react-icons/lu";
 import "../styles/main.scss";
 import { Country } from "../types";
 
@@ -84,7 +85,11 @@ function Home() {
             className="btn btn-primary"
             disabled={!selectedCountry}
           >
+          
             Ver todos os feriados
+            <span className="ms-2 icon-align">
+              <LuCalendarDays />
+            </span>
           </button>
 
           <button
@@ -93,7 +98,11 @@ function Home() {
             onClick={handleUpcoming}
             disabled={!selectedCountry}
           >
+            
             Ver próximos feriados
+            <span className="ms-2 icon-align">
+              <LuCalendarFold />
+            </span>
           </button>
 
           <button
@@ -102,7 +111,11 @@ function Home() {
             onClick={handleLongWeekends}
             disabled={!selectedCountry}
           >
+            
             Ver feriados prolongados
+            <span className="ms-2 icon-align">
+              <LuCalendarRange />
+            </span>
           </button>
         </div>
       </form>
