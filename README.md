@@ -2,7 +2,7 @@
 **Folga Finder** é uma aplicação web que permite visualizar feriados, inclusive os prolongados, em diversos países, utilizando a [API Nager.Date](https://date.nager.at), sendo ideal para planejar folgas, viagens ou descansos com base nos feriados nacionais de vários países. Foi desenvolvida com foco em responsividade, organização por rotas e boas práticas de desenvolvimento com React e TypeScript.
 
 <p align="center">
-  <img src="src/assets/logo.png" alt="Folga Finder" width="180" />
+  <img src="https://github.com/user-attachments/assets/da137c43-5c0a-4bfb-ba9a-2266f2c5de46" alt="Logo Folga Finder" width="180" />
 </p>
 
 ## Funcionalidades
